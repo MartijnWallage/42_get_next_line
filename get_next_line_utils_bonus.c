@@ -6,7 +6,7 @@
 /*   By: mwallage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:58:28 by mwallage          #+#    #+#             */
-/*   Updated: 2023/05/18 15:02:09 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:59:23 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,36 @@
 #include <unistd.h>
 #include "get_next_line.h"
 
-void	*free_line(char *line)
+char	*init_buffer(char *buffer)
 {
-	if (line)
-		free(line);
-	line = NULL;
+	int	i;
+
+	if (buffer != NULL)
+		return (buffer);
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (buffer == NULL)
+		return (NULL);
+	i = 0;
+	while (i <= BUFFER_SIZE)
+	{
+		buffer[i] = '\0';
+		i++;
+	}
+	return (buffer);
+}
+
+void	*free_all(char *s1, char *s2)
+{
+	if (s1 != NULL)
+		free(s1);
+	s1 = NULL;
+	if (s2 != NULL)
+		free(s2);
+	s2 = NULL;
 	return (NULL);
 }
 
-int	max(int a, int b)
-{
-	if (a >= b)
-		return (a);
-	else
-		return (b);
-}
-
-int	linelen(char *s)
+int	ft_linelen(char *s)
 {
 	int	i;
 
@@ -44,25 +57,13 @@ int	linelen(char *s)
 	return (i);
 }
 
-void	clean_buffer(char *buffer)
+int	lastchar(char *line)
 {
-	int	i;
-	int	j;
-	int	bufferlen;
+	int	linelen;
 
-	bufferlen = linelen(buffer);
-	i = 0;
-	while (i < bufferlen)
-	{
-		buffer[i] = 0;
-		i++;
-	}
-	j = 0;
-	while (i < BUFFER_SIZE && buffer[i])
-	{
-		buffer[j] = buffer[i];
-		buffer[i] = 0;
-		i++;
-		j++;
-	}
+	linelen = ft_linelen(line);
+	if (linelen > 0)
+		return (linelen - 1);
+	else
+		return (0);
 }

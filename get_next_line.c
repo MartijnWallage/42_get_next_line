@@ -6,7 +6,7 @@
 /*   By: mwallage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:12:45 by mwallage          #+#    #+#             */
-/*   Updated: 2023/05/18 15:16:12 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/05/18 21:49:31 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*make_line(char *line, char *buffer, int end)
 		new_str[i] = line[i];
 		i++;
 	}
-	free(line);
+	free_line(line);
 	j = 0;
 	while (i < line_len + end)
 	{
