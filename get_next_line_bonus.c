@@ -91,7 +91,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = init_line(buffer[fd]);
 	if (line == NULL)
-		return (free_strs(&buffer[fd], NULL);
+		return (free_strs(&buffer[fd], NULL));
 	bytes_read = 1;
 	while (bytes_read > 0 && line[lastchar(line)] != '\n')
 	{

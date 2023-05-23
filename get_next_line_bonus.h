@@ -24,6 +24,7 @@ char	*get_next_line(int fd);
 char	*append_buffer_to_line(char *buffer, char *oldline);
 int		lastchar(char *line);
 int		ft_linelen(char *s);
+void    *free_strs(char **buffer, char *line);
 void	update_buffer(char *buffer);
 char	*init_buffer(char *buffer);
 char	*init_line(char *buffer);
