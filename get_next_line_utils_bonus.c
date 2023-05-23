@@ -12,7 +12,7 @@
 
 #include "get_next_line_bonus.h"
 
-void	*free_strs(char **buffer, *line)
+void	*free_strs(char **buffer, char *line)
 {
 	free(*buffer);
 	*buffer = NULL;
