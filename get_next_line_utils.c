@@ -6,7 +6,7 @@
 /*   By: mwallage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:58:28 by mwallage          #+#    #+#             */
-/*   Updated: 2023/05/18 21:47:26 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:09:52 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	clean_buffer(char *buffer)
 		i++;
 	}
 	j = 0;
-	while (i <= BUFFER_SIZE && buffer[i])
+	while (i <= BUFFER_SIZE)
 	{
 		buffer[j] = buffer[i];
 		buffer[i] = 0;

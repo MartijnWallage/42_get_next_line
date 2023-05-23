@@ -6,7 +6,7 @@
 /*   By: mwallage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:58:28 by mwallage          #+#    #+#             */
-/*   Updated: 2023/05/22 16:59:23 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:16:08 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,6 @@ char	*init_buffer(char *buffer)
 		i++;
 	}
 	return (buffer);
-}
-
-void	*free_all(char *s1, char *s2)
-{
-	if (s1 != NULL)
-		free(s1);
-	s1 = NULL;
-	if (s2 != NULL)
-		free(s2);
-	s2 = NULL;
-	return (NULL);
 }
 
 int	ft_linelen(char *s)
