@@ -108,6 +108,8 @@ char	*get_next_line(int fd)
 	if (buffer[fd] == NULL)
 		return (NULL);
 	line = init_line(buffer[fd]);
+//	if (line == NULL)
+//		return (free_strs(&buffer[fd], NULL));
 	bytes_read = 1;
 	while (bytes_read > 0 && line && line[lastchar(line)] != '\n')
 	{
@@ -116,6 +118,8 @@ char	*get_next_line(int fd)
 			return (free_strs(&buffer[fd], line));
 		buffer[fd][bytes_read] = 0;
 		line = append_buffer_to_line(buffer[fd], line);
+//		if (line == NULL)
+//			return (free_strs(&buffer[fd], NULL));
 	}
 	if (buffer[fd] && *buffer[fd] == 0)
 		free_strs(&buffer[fd], NULL);

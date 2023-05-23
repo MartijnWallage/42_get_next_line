@@ -20,6 +20,24 @@ void	*free_strs(char **buffer, char *line)
 	return (NULL);
 }
 
+char	*init_buffer(char *buffer)
+{
+	int	i;
+
+	if (buffer != NULL)
+		return (buffer);
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (buffer == NULL)
+		return (NULL);
+	i = 0;
+	while (i <= BUFFER_SIZE)
+	{
+		buffer[i] = '\0';
+		i++;
+	}
+	return (buffer);
+}
+
 int	ft_linelen(char *s)
 {
 	int	i;
