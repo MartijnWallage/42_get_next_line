@@ -97,20 +97,11 @@ char	*get_next_line(int fd)
 	{
 		bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
 		if (bytes_read < 0)
-		{
-			free(line);
-			free(buffer[fd]);
-			buffer[fd] = NULL;
-			return (NULL);
-		}
+			return (free_strs(&buffer[fd], line));
 		buffer[fd][bytes_read] = 0;
 		line = append_buffer_to_line(buffer[fd], line);
 		if (line == NULL)
-		{
-			free(buffer[fd]);
-			buffer[fd] = NULL;
-			return (NULL);
-		}
+			return (free_strs(&buffer[fd], NULL));
 	}
 	if (*buffer[fd] == 0)
 	{
