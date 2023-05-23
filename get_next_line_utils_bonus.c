@@ -10,9 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
 #include "get_next_line.h"
+
+void	*free_strs(char **buffer, *line)
+{
+	free(*buffer);
+	*buffer = NULL;
+	free(line);
+	return (NULL);
+}
 
 char	*init_buffer(char *buffer)
 {

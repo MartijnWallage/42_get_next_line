@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
 #include "get_next_line_bonus.h"
 
 void	update_buffer(char *buffer)
@@ -93,11 +91,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = init_line(buffer[fd]);
 	if (line == NULL)
-	{
-		free(buffer[fd]);
-		buffer[fd] = NULL;
-		return (NULL);
-	}
+		return (free_strs(&buffer[fd], NULL);
 	bytes_read = 1;
 	while (bytes_read > 0 && line[lastchar(line)] != '\n')
 	{

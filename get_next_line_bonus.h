@@ -17,6 +17,9 @@
 #  define BUFFER_SIZE 7
 # endif
 
+# include <stdlib.h>
+# include <unistd.h>
+
 char	*get_next_line(int fd);
 char	*append_buffer_to_line(char *buffer, char *oldline);
 int		lastchar(char *line);
