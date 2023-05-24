@@ -6,34 +6,11 @@
 /*   By: mwallage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:12:45 by mwallage          #+#    #+#             */
-/*   Updated: 2023/05/23 17:17:02 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:47:30 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-void	update_buffer(char *buffer)
-{
-	int	linelen;
-	int	i;
-	int	j;
-
-	linelen = ft_linelen(buffer);
-	if (linelen == 0)
-		return ;
-	i = 0;
-	while (i < linelen)
-	{
-		buffer[i] = 0;
-		i++;
-	}
-	j = 0;
-	while (i + j <= BUFFER_SIZE)
-	{
-		buffer[j] = buffer[i + j];
-		j++;
-	}
-}
 
 char	*append_buffer_to_line(char *buffer, char *oldline)
 {
@@ -98,11 +75,11 @@ char	*init_buffer(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer[1024];
+	static char	*buffer[__FD_SETSIZE];
 	char		*line;
-	int			bytes_read;
+	ssize_t		bytes_read;
 
-	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 1023)
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= __FD_SETSIZE)
 		return (NULL);
 	buffer[fd] = init_buffer(buffer[fd]);
 	if (buffer[fd] == NULL)

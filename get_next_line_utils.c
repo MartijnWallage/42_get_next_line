@@ -6,19 +6,16 @@
 /*   By: mwallage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:58:28 by mwallage          #+#    #+#             */
-/*   Updated: 2023/05/23 15:09:52 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:36:05 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
 #include "get_next_line.h"
 
 void	*free_line(char *line)
 {
 	if (line)
 		free(line);
-	line = NULL;
 	return (NULL);
 }
 
@@ -47,22 +44,16 @@ int	linelen(char *s)
 void	clean_buffer(char *buffer)
 {
 	int	i;
-	int	j;
 	int	bufferlen;
 
 	bufferlen = linelen(buffer);
 	i = 0;
-	while (i < bufferlen)
+	while (i <= BUFFER_SIZE && buffer[i])
 	{
-		buffer[i] = 0;
+		if (i + bufferlen <= BUFFER_SIZE)
+			buffer[i] = buffer[i + bufferlen];
+		else
+			buffer[i] = 0;
 		i++;
-	}
-	j = 0;
-	while (i <= BUFFER_SIZE)
-	{
-		buffer[j] = buffer[i];
-		buffer[i] = 0;
-		i++;
-		j++;
 	}
 }

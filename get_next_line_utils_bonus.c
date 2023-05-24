@@ -6,7 +6,7 @@
 /*   By: mwallage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:58:28 by mwallage          #+#    #+#             */
-/*   Updated: 2023/05/23 17:16:08 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:36:51 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,21 @@ int	lastchar(char *line)
 		return (linelen - 1);
 	else
 		return (0);
+}
+
+void	update_buffer(char *buffer)
+{
+	int	i;
+	int	bufferlen;
+
+	bufferlen = ft_linelen(buffer);
+	i = 0;
+	while (i <= BUFFER_SIZE && buffer[i])
+	{
+		if (i + bufferlen <= BUFFER_SIZE)
+			buffer[i] = buffer[i + bufferlen];
+		else
+			buffer[i] = 0;
+		i++;
+	}
 }
