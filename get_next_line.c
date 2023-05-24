@@ -6,7 +6,7 @@
 /*   By: mwallage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:12:45 by mwallage          #+#    #+#             */
-/*   Updated: 2023/05/18 21:49:31 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:25:58 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ char	*make_line(char *line, char *buffer, int end)
 char	*read_and_write(int fd, char *buffer, char *line)
 {
 	int	bytes_read;
-	int	endline;
 	int	lastchar;
 
 	if (line == NULL)
@@ -77,12 +76,7 @@ char	*read_and_write(int fd, char *buffer, char *line)
 		if (bytes_read < 0)
 			return (free_line(line));
 		buffer[bytes_read] = '\0';
-		endline = 0;
-		while (endline < bytes_read && buffer[endline] != '\n')
-			endline++;
-		if (buffer[endline] == '\n')
-			endline++;
-		line = make_line(line, buffer, endline);
+		line = make_line(line, buffer, linelen(buffer));
 		lastchar = max(0, linelen(line) - 1);
 	}
 	return (line);
